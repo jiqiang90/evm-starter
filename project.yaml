@@ -9,21 +9,30 @@ schema:
   file: "./schema.graphql"
 
 network:
-  genesisHash: '0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3' # Polkadot
+  genesisHash: '0x401a1f9dca3da46f5c4091016c8a2f26dcea05865116b286f60f668207d1474b' # Moonriver
+  endpoint: wss://moonriver.api.onfinality.io/public-ws
+
+  chaintypes:
+    file: "./types.yaml"
 
 dataSources:
-  - kind: substrate/Runtime
-    startBlock: 1
+  - kind: substrate/Moonbeam
+    startBlock: 752073
+    processor:
+      file: './node_modules/@subql/contract-processors/dist/moonbeam.js'
     mapping:
-      file: "./dist/index.js"
+      file: './dist/index.js'
       handlers:
-        - handler: handleBlock
-          kind: substrate/BlockHandler
-        - handler: handleEvent
-          kind: substrate/EventHandler
-          filter: #Filter is optional
-            module: balances
-            method: Deposit
-        - handler: handleCall
-          kind: substrate/CallHandler
+        # - handler: handleMoonriverBlock
+        #   kind: substrate/MoonriverBlock
+        # - handler: handleMoonriverCall
+        #   kind: substrate/MoonriverCall
+        - handler: handleMoonriverEvent
+          kind: substrate/MoonbeamEvent
+          filter:
+            address: '0x6bd193ee6d2104f14f94e2ca6efefae561a4334b'
+            topics:
+              - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef' # Transfer(address,address,u256) event
+              - null
+
 
