@@ -23,10 +23,6 @@ dataSources:
     mapping:
       file: './dist/index.js'
       handlers:
-        # - handler: handleMoonriverBlock
-        #   kind: substrate/MoonriverBlock
-        # - handler: handleMoonriverCall
-        #   kind: substrate/MoonriverCall
         - handler: handleMoonriverEvent
           kind: substrate/MoonbeamEvent
           filter:
@@ -34,5 +30,10 @@ dataSources:
             topics:
               - '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef' # Transfer(address,address,u256) event
               - null
+        - handler: handleMoonriverCall
+          kind: substrate/MoonbeamCall
+          filter:
+            to: '0x6bd193ee6d2104f14f94e2ca6efefae561a4334b'
+            methodId: '0x095ea7b3' # approve(address,uint256) function
 
 
