@@ -1,6 +1,6 @@
 specVersion: "0.2.0"
 
-name: "Subql-Starter"
+name: "evm-starter"
 version: "0.0.0"
 description: ""
 repository: "https://github.com/subquery/subql-starter"
