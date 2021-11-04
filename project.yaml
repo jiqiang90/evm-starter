@@ -20,8 +20,11 @@ dataSources:
     startBlock: 752073
     processor:
       file: './node_modules/@subql/contract-processors/dist/moonbeam.js'
-    # Must be a key of assets
-    abi: erc20
+      options:
+        # Must be a key of assets
+        abi: erc20
+        ## The contract that emitted the event
+        address: '0x6bd193ee6d2104f14f94e2ca6efefae561a4334b'
     assets:
       erc20:
         file: './erc20.abi.json'
@@ -31,9 +34,6 @@ dataSources:
         - handler: handleMoonriverEvent
           kind: substrate/MoonbeamEvent
           filter:
-            ## The contract that emitted the event
-            address: '0x6bd193ee6d2104f14f94e2ca6efefae561a4334b'
-
             ## Topics that follow Ethereum JSON-RPC log filters
             ## https://docs.ethers.io/v5/concepts/events/
             ## With a couple of added benefits:
@@ -64,7 +64,7 @@ dataSources:
             function: approve(address to,uint256 value)
 
             ## Tx to field, this can be a contract address or user address
-            to: '0x6bd193ee6d2104f14f94e2ca6efefae561a4334b'
+#            to: '0x6bd193ee6d2104f14f94e2ca6efefae561a4334b'
 
             ## The transaction sender
             # from: '0x6bd193ee6d2104f14f94e2ca6efefae561a4334b'
