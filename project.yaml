@@ -31,6 +31,8 @@ dataSources:
     mapping:
       file: './dist/index.js'
       handlers:
+        - handler: handleEnumEvent
+          kind: substrate/MoonbeamEvent
         - handler: handleMoonriverEvent
           kind: substrate/MoonbeamEvent
           filter:
