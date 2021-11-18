@@ -23,3 +23,14 @@ type Approval @entity {
 
   contractAddress: String!
 }
+
+
+enum TestEnum {
+  Foo
+  Bar
+}
+
+type TestEntity @entity {
+  id: ID!
+  field: TestEnum!
+}

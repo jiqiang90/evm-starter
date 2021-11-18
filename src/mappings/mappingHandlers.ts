@@ -1,4 +1,4 @@
-import {Approval, Transaction} from "../types";
+import {Approval, TestEntity, TestEnum, Transaction} from "../types";
 import { MoonbeamEvent, MoonbeamCall } from '@subql/contract-processors/dist/moonbeam';
 import { BigNumber } from "ethers";
 
@@ -26,4 +26,14 @@ export async function handleMoonriverCall(event: MoonbeamCall<ApproveCallArgs>):
     record.contractAddress = event.to;
 
     await record.save();
+}
+
+export async function handleEnumEvent(event: MoonbeamEvent<TransferEventArgs>): Promise<void> {
+    const blockId = event.blockNumber;
+    const eventIdx = event.transactionIndex;
+
+    await TestEntity.create({
+        id: `${blockId}/${eventIdx}`,
+        field: blockId % 2 === 0 ? TestEnum.Foo : TestEnum.Bar,
+    }).save();
 }
