@@ -20,12 +20,13 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@polkadot/api": "6.8.1",
-    "@subql/cli": "0.15.1-7",
+    "@subql/cli": "0.16.2-1",
     "typescript": "4.4.4"
   },
   "dependencies": {
-    "@subql/contract-processors": "^0.3.1-1",
-    "@subql/types": "0.10.1-1",
-    "ethers": "^5.5.0"
+    "@subql/contract-processors": "^0.3.3-3",
+    "@subql/types": "0.11.1-1",
+    "ethers": "^5.5.0",
+    "moonbeam-types-bundle": "^2.0.1"
   }
 }
